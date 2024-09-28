@@ -13,6 +13,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'Raleway', sans-serif;
+            position: relative;
         }
         
         .video-background {
@@ -98,20 +99,89 @@
             height: 20px;
         }
 
-        .additional-box { 
+        .mute-volume-box {
+            position: fixed; 
+            bottom: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px; 
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #a700ff;
+            transition: background-color 0.5s;
+            gap: 15px; 
+        }
+
+        .mute-volume-box:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .mute {
+            color: white;
+            font-size: 1.1em; 
+            text-align: center;
+            margin-bottom: 5px; 
+        }
+
+        .volume-control {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 10px; 
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .volume-control label {
+            color: white;
+            margin-bottom: 5px; 
+            display: block;
+            font-weight: bold;
+        }
+
+        .volume-control input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px; 
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px; 
+            height: 24px;
+            border-radius: 50%;
+            background: #a700ff;
+            border: 2px solid white;
+        }
+
+        .volume-control input[type="range"]::-moz-range-thumb {
+            width: 24px; 
+            height: 24px;
+            border-radius: 50%;
+            background: #a700ff;
+            border: 2px solid white;
+        }
+
+        .additional-box {
             border-radius: 15px;
             width: 250px;
             text-align: center;
-            position: absolute;
+            position: fixed; 
             top: 50%;
-            right: 5%;
+            right: 5%; 
             transform: translate(0, -50%);
         }
 
         .team-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-end; 
         }
         
         .team-box {
@@ -153,70 +223,6 @@
         .team-rank {
             font-size: 12px;
             color: rgb(193, 193, 193);
-        }
-
-        .mute {
-            position: fixed;
-            height: 25px;
-            width: 400px;
-            bottom: 20px;
-            left: 48.8%;
-            transform: translateX(-50%);
-            padding: 5px;
-            background-color: rgba(0, 0, 0, 0.4);
-            text-align: center;
-            border-radius: 10px;
-            font-size: larger;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: 35px;
-            border: 1px solid #a700ff;
-            transition: background-color 0.5s;
-        }
-
-        .mute:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .volume-control {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .volume-control label {
-            color: white;
-            margin-bottom: 10px;
-            display: block;
-            font-weight: bold;
-        }
-
-        .volume-control input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .volume-control input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #a700ff;
-            border: 2px solid white;
-        }
-
-        .volume-control input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #a700ff;
-            border: 2px solid white;
         }
     </style>
 </head>
@@ -260,12 +266,13 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div class="mute-volume-box">
+        <div class="mute">Drücke Leertaste zum Stummschalten</div>
         <div class="volume-control">
             <label for="volumeRange">Lautstärke:</label>
             <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)" />
-        </div>
-        <div class="mute">
-            Drücke Leertaste zum Stummschalten
         </div>
     </div>
 
