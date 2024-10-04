@@ -204,6 +204,10 @@
 </head>
 <body>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setVolume(0.2); // Setzt die Lautstärke auf 20% beim Laden der Seite
+        });
+
         document.addEventListener('keydown', function(event) {
             if (event.keyCode === 32) {
                 var audio = document.getElementById('loading');
@@ -222,7 +226,7 @@
     </script>
 
     <div class="video-background">
-    <iframe src="https://www.youtube.com/embed/f1MAEDPcUC0?si=a_0SZgaxTjrNwoCM?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;start=13" frameborder="0"></iframe>
+        <iframe src="https://www.youtube.com/embed/f1MAEDPcUC0?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;start=13" frameborder="0"></iframe>
     </div>
 
     <audio id="loading" src="song.mp3" autoplay="true" hidden="true" loop="true"></audio>
@@ -248,7 +252,7 @@
     <div class="mute-volume-box">
         <div class="volume-control">
             <label for="volumeRange">Lautstärke:</label>
-            <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)" />
+            <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="0.2" oninput="setVolume(this.value)" />
         </div>
     </div>
 
